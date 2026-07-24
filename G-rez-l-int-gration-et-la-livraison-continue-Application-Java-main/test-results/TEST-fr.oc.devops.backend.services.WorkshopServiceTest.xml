@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="fr.oc.devops.backend.services.WorkshopServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-07-24T18:07:05" hostname="macbook-pro-de-omeima12.home" time="0.003">
+  <properties/>
+  <testcase name="createWorkshop()" classname="fr.oc.devops.backend.services.WorkshopServiceTest" time="0.003"/>
+  <system-out><![CDATA[20:07:05.943 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [fr.oc.devops.backend.services.WorkshopServiceTest]: WorkshopServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

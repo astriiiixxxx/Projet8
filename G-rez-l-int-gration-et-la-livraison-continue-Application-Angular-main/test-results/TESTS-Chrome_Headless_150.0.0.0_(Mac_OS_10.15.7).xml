@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome Headless 150.0.0.0 (Mac OS 10.15.7)" package="" timestamp="2026-07-24T18:08:29" id="0" hostname="macbook-pro-de-omeima12.home" tests="5" errors="0" failures="0" time="0.033">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 Safari/537.36"/>
+  </properties>
+  <testcase name="AppComponent should create the app" time="0.022" classname="Chrome_Headless_150_0_0_0_(Mac_OS_10_15_7).AppComponent"/>
+  <testcase name="AppComponent should have as title 'olympic-games-starter'" time="0.002" classname="Chrome_Headless_150_0_0_0_(Mac_OS_10_15_7).AppComponent"/>
+  <testcase name="HomeComponent should create" time="0.006" classname="Chrome_Headless_150_0_0_0_(Mac_OS_10_15_7).HomeComponent"/>
+  <testcase name="OlympicService should be created" time="0" classname="Chrome_Headless_150_0_0_0_(Mac_OS_10_15_7).OlympicService"/>
+  <testcase name="NotFoundComponent should create" time="0.003" classname="Chrome_Headless_150_0_0_0_(Mac_OS_10_15_7).NotFoundComponent"/>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>
