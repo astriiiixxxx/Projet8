@@ -1,0 +1,31 @@
+# Métadonnées Git : inutiles dans l'image, alourdissent le contexte de build.
+.git
+.gitignore
+
+# Sorties de build Gradle précédentes : régénérées par ./gradlew bootWar
+# dans le stage builder, pas besoin de les copier depuis l'hôte.
+build
+
+# Cache/config locale de Gradle (peut contenir des chemins ou credentials
+# propres à la machine de dev, à ne pas embarquer).
+.gradle
+
+# Environnement de développement / éditeur.
+.vscode
+.idea
+*.iml
+
+# Fichiers Docker eux-mêmes : pas besoin de les copier dans le contexte de build.
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Logs.
+*.log
+
+# Fichiers d'environnement sensibles (le cas échéant).
+.env
+.env.local
+
+# Documentation, non nécessaire au runtime.
+README.md

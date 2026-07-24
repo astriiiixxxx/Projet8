@@ -1,0 +1,15 @@
+services:
+
+  # Service unique : l'application Angular servie par NGINX.
+  angular:
+    # Construit l'image à partir du Dockerfile présent dans le dossier courant.
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Nom explicite de l'image générée (facultatif mais pratique pour la CI/CD).
+    image: olympic-games-starter
+    ports:
+      # Mappe le port 80 de l'hôte vers le port 80 du conteneur (nginx).
+      # Format hôte:conteneur.
+      - "80:80"
+    restart: unless-stopped

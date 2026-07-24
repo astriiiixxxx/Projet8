@@ -1,0 +1,33 @@
+# Dépendances : réinstallées dans le conteneur via npm ci, inutile de les copier
+# (gain de temps et évite les incompatibilités binaires host/conteneur).
+node_modules
+
+# Build précédent : régénéré par npm run build dans le stage builder.
+dist
+
+# Métadonnées Git : jamais nécessaires à l'intérieur de l'image.
+.git
+.gitignore
+
+# Environnement de dev / éditeur.
+.vscode
+.idea
+
+# Fichiers Docker eux-mêmes : pas besoin de les copier dans le contexte de build.
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Logs et fichiers temporaires npm.
+npm-debug.log*
+*.log
+
+# Rapports de tests / couverture.
+coverage
+
+# Fichiers d'environnement sensibles (le cas échéant).
+.env
+.env.local
+
+# Documentation, non nécessaire au runtime.
+README.md

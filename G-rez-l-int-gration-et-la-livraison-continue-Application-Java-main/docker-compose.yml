@@ -1,13 +1,28 @@
 services:
 
   app:
+    # Construit l'image directement depuis le Dockerfile du repo (au lieu de
+    # référencer une image déjà construite en amont).
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: workshop-organizer
     ports:
+      # Port hôte:conteneur. Spring Boot écoute sur 8080 par défaut.
       - "8080:8080"
     environment:
+      # URL JDBC : "db" est le nom du service Postgres ci-dessous, résolu
+      # automatiquement par le DNS interne du réseau Docker Compose.
       SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/workshopsdb"
       SPRING_DATASOURCE_USERNAME: workshops_user
       SPRING_DATASOURCE_PASSWORD: oc2024
+    depends_on:
+      # L'app ne démarre que lorsque le healthcheck de "db" est passé au vert
+      # (pas juste quand le conteneur Postgres a démarré, ce qui serait trop tôt :
+      # Postgres met un peu de temps à accepter les connexions).
+      db:
+        condition: service_healthy
+    restart: unless-stopped
 
   db:
     image: postgres:13
@@ -15,3 +30,19 @@ services:
       POSTGRES_USER: workshops_user
       POSTGRES_PASSWORD: oc2024
       POSTGRES_DB: workshopsdb
+    volumes:
+      # Volume nommé : les données Postgres survivent aux redémarrages/recreations
+      # du conteneur (contrairement à un volume anonyme ou pas de volume du tout).
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      # pg_isready vérifie que le serveur Postgres accepte les connexions,
+      # avec les identifiants attendus par l'application.
+      test: ["CMD-SHELL", "pg_isready -U workshops_user -d workshopsdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+# Déclaration du volume nommé utilisé par le service "db".
+volumes:
+  db_data:
